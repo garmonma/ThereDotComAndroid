@@ -8,17 +8,76 @@
     android:gravity="center_vertical">
 
     <TextView
+        android:id="@+id/calculatorTitleName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:textSize="@dimen/calculator_title_size"
         android:text="@string/calculator_new_adventure"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="25dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/calculator_group_size"
+            android:textSize="@dimen/calculator_text_size"/>
+
+        <EditText
+            android:id="@+id/editGroupSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:inputType="number"
+            android:hint="Group Size"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/calculator_destination"
+            android:textSize="@dimen/calculator_text_size"/>
+
+        <EditText
+            android:id="@+id/editAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:inputType="textPostalAddress"
+            android:hint="Address"/>
+
+        <EditText
+            android:id="@+id/editState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:inputType="text"
+            android:hint="State"/>
+
+        <EditText
+            android:id="@+id/editCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:inputType="text"
+            android:hint="City"/>
+
+        <Button
+            android:id="@+id/initButtonNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/calculator_button_next"
+            android:layout_gravity="end"
+            android:enabled="false"/>
 
     </LinearLayout>
 

@@ -46,7 +46,7 @@
                 android:textSize="@dimen/calculator_input_text_size"
                 android:inputType="numberDecimal"
                 android:enabled="false"
-                android:text="Plane" />
+                android:hint="Plane" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                 android:textSize="@dimen/calculator_input_text_size"
                 android:inputType="numberDecimal"
                 android:enabled="false"
-                android:text="Driving" />
+                android:hint="Driving" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                 android:textSize="@dimen/calculator_input_text_size"
                 android:inputType="numberDecimal"
                 android:enabled="false"
-                android:text="Train" />
+                android:hint="Train" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                 android:inputType="numberDecimal"
                 android:textSize="@dimen/calculator_input_text_size"
                 android:enabled="false"
-                android:text="Light Rail" />
+                android:hint="Light Rail" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
                 android:inputType="numberDecimal"
                 android:textSize="@dimen/calculator_input_text_size"
                 android:enabled="false"
-                android:text="Uber/Lyft/Taxi" />
+                android:hint="Uber/Lyft/Taxi" />
 
 
         </GridLayout>

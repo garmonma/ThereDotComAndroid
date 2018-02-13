@@ -20,6 +20,30 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/calculator_food"
+            android:textSize="@dimen/calculator_text_size"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/calculator_input_text_size"
+            android:inputType="numberDecimal"
+            android:enabled="false"
+            android:hint="Food budget" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/calculator_button_calculate"
+            android:layout_gravity="end"
+            android:enabled="false"/>
+
+
     </LinearLayout>
 
 

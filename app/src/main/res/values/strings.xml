@@ -8,16 +8,24 @@
 
 
     <string name="calculator_new_adventure">New Adventure</string>
+    <string name="calculator_planned_excursion">Planned Excursion</string>
     <string name="calculator_travel_one">How will you get there?</string>
     <string name="calculator_flight_two">How much is your budget for a flight?</string>
-    <string name="calculator_start">Hi, Let\'s get started.</string>
-    <string name="calculator_group_size">How many are you?</string>
+    <string name="calculator_start">Hi, Let\'s get started!</string>
+    <string name="calculator_group_size">How many are going?</string>
     <string name="calculator_button_next">NEXT</string>
+    <string name="calculator_button_calculate">CALCULATE</string>
     <string name="calculator_button_finish">FINISH</string>
-    <string name="calculator_destination">What is your destination?</string>
-    <string name="calculator_hotel">Will you be staying in a hotel?</string>
+    <string name="calculator_destination">Destination?</string>
+    <string name="calculator_hotel_one">Will you be staying in a hotel?</string>
+    <string name="calculator_hotel_two">How many nights?</string>
     <string name="calculator_rental_car_one">Hmmmm, is a rental car in your budget?</string>
     <string name="calculator_rental_car_two"></string>
-    <string name="calculator_food">What is your food budget?
-    </string>
+    <string name="calculator_food">What is your food budget?</string>
+    <string name="calculator_total_trip">Total Trip</string>
+    <string name="calculator_fun_money">Fun Money</string>
+    <string name="calculator_button_cost_breakdown">Cost Breakdown</string>
+    <string name="calculator_button_save">Save</string>
+    <string name="calculator_button_edit">Edit</string>
+
 </resources>
