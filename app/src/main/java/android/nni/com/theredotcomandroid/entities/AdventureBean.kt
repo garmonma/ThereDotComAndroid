@@ -3,7 +3,7 @@ package android.nni.com.theredotcomandroid.entities
 /**
  * Created by Marcus Garmon on 2/6/2018.
  */
-data class AdventureEntity(
+data class AdventureBean(
         var adventureName: String = "",
         var transportationMethods: List<String> = emptyList(),
         var groupSize: Int = 0,

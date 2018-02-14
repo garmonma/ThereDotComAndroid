@@ -9,9 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.view.View.OnFocusChangeListener
-
-
 
 /**
  * Created by Marcus Garmon on 2/11/2018.
@@ -39,7 +36,6 @@ class CalculatorInitFragment : Fragment(), View.OnClickListener  {
         buttonNext?.setOnClickListener(this)
 
         editGroupSize?.setOnFocusChangeListener { v, hasFocus ->
-
             buttonNext?.isEnabled = !hasFocus && !editGroupSize?.text.toString().isEmpty()
         }
 
@@ -63,13 +59,13 @@ class CalculatorInitFragment : Fragment(), View.OnClickListener  {
     }
 
     interface OnInitNextClicked {
-        fun onNextClicked(groupSize: Int, address: String, state: String, city: String)
+        fun onInitNextClicked(groupSize: Int, address: String, state: String, city: String)
     }
 
     private fun onNextButtonClicked() {
         var groupSize = this.editGroupSize?.text.toString().toInt()
 
-        mCallback.onNextClicked(
+        mCallback.onInitNextClicked(
                 groupSize,
                 editAddress?.text.toString(),
                 editState?.text.toString(),

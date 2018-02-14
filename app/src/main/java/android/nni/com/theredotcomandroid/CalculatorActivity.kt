@@ -1,13 +1,13 @@
 package android.nni.com.theredotcomandroid
 
-import android.nni.com.theredotcomandroid.entities.AdventureEntity
-import android.nni.com.theredotcomandroid.fragments.calculator.CalculatorInitFragment
-import android.nni.com.theredotcomandroid.fragments.calculator.CalculatorStep
-import android.nni.com.theredotcomandroid.fragments.calculator.CalculatorTitleFragment
-import android.nni.com.theredotcomandroid.fragments.calculator.CalculatorTravelFragment
+import android.nni.com.theredotcomandroid.entities.AdventureBean
+import android.nni.com.theredotcomandroid.entities.TravelFragmentBean
+import android.nni.com.theredotcomandroid.fragments.calculator.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.CheckBox
 import android.widget.FrameLayout
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -18,16 +18,19 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 class CalculatorActivity : AppCompatActivity(),
         CalculatorTitleFragment.OnOptionClicked,
-        CalculatorInitFragment.OnInitNextClicked{
+        CalculatorInitFragment.OnInitNextClicked,
+        CalculatorTravelFragment.OnTravelNextClicked{
 
-    private var adventure : AdventureEntity? = null
+    private var adventure : AdventureBean? = null
+
+    private var currentFragment :Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
         setSupportActionBar(toolbar)
 
-        adventure = AdventureEntity()
+        adventure = AdventureBean()
 
         if (findViewById<FrameLayout>(R.id.calculator_fragment_container) != null) {
 
@@ -40,7 +43,7 @@ class CalculatorActivity : AppCompatActivity(),
 
             // Create a new Fragment to be placed in the activity layout
             val firstFragment = CalculatorTitleFragment()
-
+            currentFragment = firstFragment
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
             firstFragment.arguments = intent.extras
@@ -75,6 +78,7 @@ class CalculatorActivity : AppCompatActivity(),
         transaction.replace(R.id.calculator_fragment_container, fragment)
         transaction.addToBackStack(null)
 
+        currentFragment = fragment;
         transaction.commit()
     }
 
@@ -92,7 +96,7 @@ class CalculatorActivity : AppCompatActivity(),
         proceed(fragment, CalculatorStep.STEP_TWO_GET_STARTED)
     }
 
-    override fun onNextClicked(groupSize: Int, address: String, state: String, city: String ) {
+    override fun onInitNextClicked(groupSize: Int, address: String, state: String, city: String ) {
         val fragment = CalculatorTravelFragment()
         adventure!!.groupSize = groupSize
         adventure!!.address = address
@@ -100,5 +104,22 @@ class CalculatorActivity : AppCompatActivity(),
         adventure!!.city = city
 
         proceed(fragment, CalculatorStep.STEP_THREE_TRANSPORTATION_SELECT)
+    }
+
+    override fun onTravelNextClicked(travelData: TravelFragmentBean) {
+        val fragment = CalculatorLodgingFragment()
+        adventure!!.drivingBudget = travelData.drivingBudget
+        adventure!!.planeBudget = travelData.planeBudget
+        adventure!!.railBudget = travelData.railBudget
+        adventure!!.taxiBudget = travelData.taxiBudget
+        adventure!!.trainBudget = travelData.trainBudget
+
+        proceed(fragment, CalculatorStep.STEP_FOUR_LODGING_BUDGET)
+    }
+
+    fun onCheckboxClicked(view: View){
+        if(currentFragment is CalculatorTravelFragment){
+            (currentFragment as CalculatorTravelFragment).onCheckboxClicked(view)
+        }
     }
 }

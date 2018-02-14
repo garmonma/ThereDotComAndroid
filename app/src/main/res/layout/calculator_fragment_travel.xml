@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -36,11 +38,14 @@
             android:orientation="horizontal"
             android:gravity="center_horizontal">
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/travelCheckboxPlane"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"/>
 
             <EditText
+                android:id="@+id/travelEditPlane"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/calculator_input_text_size"
@@ -48,11 +53,14 @@
                 android:enabled="false"
                 android:hint="Plane" />
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/travelCheckboxDriving"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"/>
 
             <EditText
+                android:id="@+id/travelEditDriving"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/calculator_input_text_size"
@@ -60,11 +68,14 @@
                 android:enabled="false"
                 android:hint="Driving" />
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/travelCheckboxTrain"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"/>
 
             <EditText
+                android:id="@+id/travelEditTrain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/calculator_input_text_size"
@@ -72,11 +83,14 @@
                 android:enabled="false"
                 android:hint="Train" />
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/travelCheckboxRail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"/>
 
             <EditText
+                android:id="@+id/travelEditRail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -84,33 +98,29 @@
                 android:enabled="false"
                 android:hint="Light Rail" />
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/travelCheckboxTaxi"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="onCheckboxClicked"/>
 
             <EditText
+                android:id="@+id/travelEditTaxi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:textSize="@dimen/calculator_input_text_size"
                 android:enabled="false"
                 android:hint="Uber/Lyft/Taxi" />
-
-
         </GridLayout>
 
         <Button
+            android:id="@+id/travelButtonNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/calculator_button_next"
             android:layout_gravity="end"
             android:enabled="false"/>
-
-
     </LinearLayout>
-
-
-
-
 </LinearLayout>
