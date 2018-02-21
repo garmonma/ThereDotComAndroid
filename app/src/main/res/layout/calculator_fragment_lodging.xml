@@ -35,11 +35,13 @@
             android:gravity="center_horizontal">
 
             <Button
+                android:id="@+id/lodgingButtonYes"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Yes"/>
 
             <Button
+                android:id="@+id/lodgingButtonNo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="No"/>
@@ -54,6 +56,7 @@
             android:textSize="@dimen/calculator_text_size"/>
 
         <EditText
+            android:id="@+id/lodgingNights"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/calculator_input_text_size"
@@ -62,6 +65,7 @@
             android:hint="Number of nights" />
 
         <EditText
+            android:id="@+id/lodgingCostPerNight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/calculator_input_text_size"
@@ -70,16 +74,12 @@
             android:hint="Cost per night" />
 
         <Button
+            android:id="@+id/lodgingNextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/calculator_button_next"
             android:layout_gravity="end"
             android:enabled="false"/>
-        
-
     </LinearLayout>
-
-
-
 </LinearLayout>

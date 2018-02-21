@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.EditText
 import android.support.v7.widget.AppCompatCheckBox
 import android.widget.Button
@@ -84,7 +83,7 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
 
 
     fun onCheckboxClicked(view: View){
-        val checked = (view as CheckBox).isChecked
+        val checked = (view as AppCompatCheckBox).isChecked
 
         when (view.id){
             R.id.travelCheckboxPlane ->
