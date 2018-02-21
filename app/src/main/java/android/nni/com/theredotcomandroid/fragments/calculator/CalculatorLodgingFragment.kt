@@ -2,6 +2,7 @@ package android.nni.com.theredotcomandroid.fragments.calculator
 
 import android.content.Context
 import android.nni.com.theredotcomandroid.R
+import android.nni.com.theredotcomandroid.entities.LodgingFragmentBean
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +12,8 @@ import android.widget.Button
 import android.widget.EditText
 
 /**
- * Created by Marcus Garmon on 2/11/2018.
- */
+* Created by Marcus Garmon on 2/11/2018.
+*/
 class CalculatorLodgingFragment: Fragment(), View.OnClickListener  {
 
 
@@ -22,6 +23,8 @@ class CalculatorLodgingFragment: Fragment(), View.OnClickListener  {
     private var yesButton : Button? = null
     private var noButton : Button? = null
     private var nextButton : Button? = null
+
+    private var data : LodgingFragmentBean? = null
 
     private lateinit var mCallback: CalculatorLodgingFragment.OnLodgingNextClicked
 
@@ -39,6 +42,16 @@ class CalculatorLodgingFragment: Fragment(), View.OnClickListener  {
         yesButton?.setOnClickListener(this)
         noButton?.setOnClickListener(this)
         nextButton?.setOnClickListener(this)
+
+        costPerNight?.setOnFocusChangeListener { v, hasFocus ->
+            nextButton?.isEnabled = !hasFocus && !costPerNight?.text.toString().isEmpty()
+                    && !amountOfNights?.text.toString().isEmpty()
+        }
+
+        amountOfNights?.setOnFocusChangeListener { v, hasFocus ->
+            nextButton?.isEnabled = !hasFocus && !costPerNight?.text.toString().isEmpty()
+                    && !amountOfNights?.text.toString().isEmpty()
+        }
 
         return v
     }
@@ -69,17 +82,28 @@ class CalculatorLodgingFragment: Fragment(), View.OnClickListener  {
     }
 
     interface OnLodgingNextClicked {
-        fun onLodgingNextClicked()
+        fun onLodgingNextClicked(lodgingData: LodgingFragmentBean)
     }
 
     private fun onNextButtonClicked() {
-        mCallback.onLodgingNextClicked()
+        data!!.costPerNight = costPerNight?.text.toString().toDoubleOrNull()!!
+        data!!.numberOfNights = amountOfNights?.text.toString().toIntOrNull()!!
+        data!!.lodging = noButton?.isEnabled!!
+
+        mCallback.onLodgingNextClicked(data!!)
     }
 
     private fun onNoButtonClicked() {
-
+        nextButton?.isEnabled = true
+        amountOfNights?.isEnabled = false
+        costPerNight?.isEnabled = false
     }
 
-    private fun onYesButtonClicked(){}
+    private fun onYesButtonClicked(){
+        nextButton?.isEnabled = false
+        amountOfNights?.isEnabled = true
+        costPerNight?.isEnabled = true
+
+    }
 
 }
