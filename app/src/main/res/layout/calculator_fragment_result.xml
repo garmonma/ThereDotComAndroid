@@ -20,7 +20,8 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
+            android:id="@+id/totalBudgetView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="false"
@@ -33,21 +34,24 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <CheckBox
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkFunMoney"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:onClick="onCheckboxClicked"/>
 
             <EditText
+                android:id="@+id/editFunMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:hint="@string/calculator_fun_money"
                 android:textSize="@dimen/calculator_input_text_size" />
 
-
         </LinearLayout>
 
         <Button
+            android:id="@+id/costBreakdownButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/calculator_button_cost_breakdown" />
@@ -60,25 +64,20 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:enabled="false"
+                android:enabled="true"
                 android:text="@string/calculator_button_save" />
 
             <Button
+                android:id="@+id/editButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:enabled="false"
+                android:enabled="true"
                 android:text="@string/calculator_button_edit" />
-
-
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-
 </LinearLayout>

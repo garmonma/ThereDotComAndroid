@@ -22,7 +22,7 @@
     <string name="calculator_rental_car_one">Hmmmm, is a rental car in your budget?</string>
     <string name="calculator_rental_car_two"></string>
     <string name="calculator_food">What is your food budget?</string>
-    <string name="calculator_total_trip">Total Trip</string>
+    <string name="calculator_total_trip">Budget Total</string>
     <string name="calculator_fun_money">Fun Money</string>
     <string name="calculator_button_cost_breakdown">Cost Breakdown</string>
     <string name="calculator_button_save">Save</string>

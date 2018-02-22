@@ -57,31 +57,6 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
         return v
     }
 
-    private fun setupViewListeners(){
-        travelButtonNext?.setOnClickListener(this)
-
-        travelEditPlane?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditPlane?.text.toString().isEmpty() && checkboxPlane?.isChecked == true
-        }
-
-        travelEditDriving?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditDriving?.text.toString().isEmpty() && checkboxDriving?.isChecked == true
-        }
-
-        travelEditTrain?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditTrain?.text.toString().isEmpty() && checkboxTrain?.isChecked == true
-        }
-
-        travelEditRail?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditRail?.text.toString().isEmpty() && checkboxRail?.isChecked == true
-        }
-
-        travelEditTaxi?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditTaxi?.text.toString().isEmpty() && checkboxTaxi?.isChecked == true
-        }
-    }
-
-
     fun onCheckboxClicked(view: View){
         val checked = (view as AppCompatCheckBox).isChecked
 
@@ -126,5 +101,29 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
         travelData!!.trainBudget = travelEditTrain?.text.toString().toDoubleOrNull()!!
 
         mCallback.onTravelNextClicked(travelData!!)
+    }
+
+    private fun setupViewListeners(){
+        travelButtonNext?.setOnClickListener(this)
+
+        travelEditPlane?.setOnFocusChangeListener { v, hasFocus ->
+            travelButtonNext?.isEnabled = !hasFocus && !travelEditPlane?.text.toString().isEmpty() && checkboxPlane?.isChecked == true
+        }
+
+        travelEditDriving?.setOnFocusChangeListener { v, hasFocus ->
+            travelButtonNext?.isEnabled = !hasFocus && !travelEditDriving?.text.toString().isEmpty() && checkboxDriving?.isChecked == true
+        }
+
+        travelEditTrain?.setOnFocusChangeListener { v, hasFocus ->
+            travelButtonNext?.isEnabled = !hasFocus && !travelEditTrain?.text.toString().isEmpty() && checkboxTrain?.isChecked == true
+        }
+
+        travelEditRail?.setOnFocusChangeListener { v, hasFocus ->
+            travelButtonNext?.isEnabled = !hasFocus && !travelEditRail?.text.toString().isEmpty() && checkboxRail?.isChecked == true
+        }
+
+        travelEditTaxi?.setOnFocusChangeListener { v, hasFocus ->
+            travelButtonNext?.isEnabled = !hasFocus && !travelEditTaxi?.text.toString().isEmpty() && checkboxTaxi?.isChecked == true
+        }
     }
 }

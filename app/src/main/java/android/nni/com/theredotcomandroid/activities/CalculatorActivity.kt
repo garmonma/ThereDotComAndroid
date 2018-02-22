@@ -1,5 +1,6 @@
 package android.nni.com.theredotcomandroid.activities
 
+import android.nni.com.theredotcomandroid.CalculatorPersistService
 import android.nni.com.theredotcomandroid.R
 import android.nni.com.theredotcomandroid.entities.AdventureBean
 import android.nni.com.theredotcomandroid.entities.LodgingFragmentBean
@@ -13,21 +14,24 @@ import android.widget.FrameLayout
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 /**
- * Created by Marcus Garmon on 2/6/2018.
- */
-
+* Created by Marcus Garmon on 2/6/2018.
+*/
 
 class CalculatorActivity : AppCompatActivity(),
         CalculatorTitleFragment.OnOptionClicked,
         CalculatorInitFragment.OnInitNextClicked,
         CalculatorTravelFragment.OnTravelNextClicked,
         CalculatorLodgingFragment.OnLodgingNextClicked,
-        CalculatorFoodFragment.OnCalculateClicked{
-
+        CalculatorFoodFragment.OnCalculateClicked,
+        CalculatorResultsFragment.OnButtonClicked{
 
     private var adventure : AdventureBean? = null
 
-    private var currentFragment :Fragment? = null
+    private var calculatorService : CalculatorPersistService? = null
+
+    private var currentFragment : Fragment? = null
+
+    private var hasInternet : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,7 @@ class CalculatorActivity : AppCompatActivity(),
         setSupportActionBar(toolbar)
 
         adventure = AdventureBean()
+        calculatorService = CalculatorPersistService()
 
         if (findViewById<FrameLayout>(R.id.calculator_fragment_container) != null) {
 
@@ -139,10 +144,33 @@ class CalculatorActivity : AppCompatActivity(),
         proceed(fragment, CalculatorStep.STEP_SEVEN_RESULTS_PAGE)
     }
 
+    override fun onSaveClicked() {
+        TODO("Show popup to name adventure")
+        TODO("Name Adventure, on enter clicked proceed to planned excursion")
+
+        if(!hasInternet)
+            calculatorService?.writeAdventureToFile(adventure)
+        else
+            calculatorService?.writeAdventureToDatabase(adventure)
+
+    }
+
+    override fun onEditClicked() {
+        val fragment = CalculatorTitleFragment()
+
+        TODO("Grab the fun money and save it to the adventure")
+        proceed(fragment, CalculatorStep.STEP_TWO_GET_STARTED)
+    }
+
+    override fun onBreakdownClicked() {
+        TODO("Show popup for breakdown results")
+    }
 
     fun onCheckboxClicked(view: View){
         if(currentFragment is CalculatorTravelFragment){
             (currentFragment as CalculatorTravelFragment).onCheckboxClicked(view)
+        } else if(currentFragment is CalculatorResultsFragment){
+            (currentFragment as CalculatorResultsFragment).onCheckboxClicked(view)
         }
     }
 
