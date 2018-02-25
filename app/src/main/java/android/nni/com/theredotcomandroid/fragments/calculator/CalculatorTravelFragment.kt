@@ -2,7 +2,7 @@ package android.nni.com.theredotcomandroid.fragments.calculator
 
 import android.content.Context
 import android.nni.com.theredotcomandroid.R
-import android.nni.com.theredotcomandroid.entities.TravelFragmentBean
+import android.nni.com.theredotcomandroid.beans.TravelFragmentBean
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -37,6 +37,8 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater?.inflate(R.layout.calculator_fragment_travel, container, false)
+
+        travelData = TravelFragmentBean()
 
         checkboxPlane = v?.findViewById(R.id.travelCheckboxPlane)
         checkboxDriving = v?.findViewById(R.id.travelCheckboxDriving)
@@ -95,9 +97,13 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
 
     private fun onNextButtonClicked(){
         travelData!!.drivingBudget = travelEditDriving?.text.toString().toDoubleOrNull()!!
+
         travelData!!.planeBudget = travelEditPlane?.text.toString().toDoubleOrNull()!!
+
         travelData!!.railBudget = travelEditRail?.text.toString().toDoubleOrNull()!!
+
         travelData!!.taxiBudget = travelEditTaxi?.text.toString().toDoubleOrNull()!!
+
         travelData!!.trainBudget = travelEditTrain?.text.toString().toDoubleOrNull()!!
 
         mCallback.onTravelNextClicked(travelData!!)
@@ -107,23 +113,23 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
         travelButtonNext?.setOnClickListener(this)
 
         travelEditPlane?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditPlane?.text.toString().isEmpty() && checkboxPlane?.isChecked == true
+            travelButtonNext?.isEnabled =  !travelEditPlane?.text.toString().isEmpty() && checkboxPlane?.isChecked == true
         }
 
         travelEditDriving?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditDriving?.text.toString().isEmpty() && checkboxDriving?.isChecked == true
+            travelButtonNext?.isEnabled =  !travelEditDriving?.text.toString().isEmpty() && checkboxDriving?.isChecked == true
         }
 
         travelEditTrain?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditTrain?.text.toString().isEmpty() && checkboxTrain?.isChecked == true
+            travelButtonNext?.isEnabled =  !travelEditTrain?.text.toString().isEmpty() && checkboxTrain?.isChecked == true
         }
 
         travelEditRail?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditRail?.text.toString().isEmpty() && checkboxRail?.isChecked == true
+            travelButtonNext?.isEnabled = checkboxRail?.isChecked == true && !travelEditRail?.text.toString().isEmpty()
         }
 
         travelEditTaxi?.setOnFocusChangeListener { v, hasFocus ->
-            travelButtonNext?.isEnabled = !hasFocus && !travelEditTaxi?.text.toString().isEmpty() && checkboxTaxi?.isChecked == true
+            travelButtonNext?.isEnabled = !travelEditTaxi?.text.toString().isEmpty() && checkboxTaxi?.isChecked == true
         }
     }
 }

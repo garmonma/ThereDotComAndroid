@@ -1,4 +1,4 @@
-package android.nni.com.theredotcomandroid.entities
+package android.nni.com.theredotcomandroid.beans
 
 /**
  * Created by Marcus Garmon on 2/6/2018.

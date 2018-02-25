@@ -21,7 +21,7 @@ class CalculatorFoodFragment : Fragment(), View.OnClickListener {
     private lateinit var mCallback: CalculatorFoodFragment.OnCalculateClicked
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater?.inflate(R.layout.calculator_fragment_init, container, false)
+        val v = inflater?.inflate(R.layout.calculator_fragment_food, container, false)
 
         foodBudget = v?.findViewById(R.id.calculatorFoodBudget)
         calculateButton = v?.findViewById(R.id.calculateButton)
@@ -29,13 +29,13 @@ class CalculatorFoodFragment : Fragment(), View.OnClickListener {
         calculateButton?.setOnClickListener(this)
 
         foodBudget?.setOnFocusChangeListener { v, hasFocus ->
-            calculateButton?.isEnabled = !hasFocus && !foodBudget?.text.toString().isEmpty()
+           // calculateButton?.isEnabled = !foodBudget?.text.toString().isEmpty()
         }
         return v
     }
 
     override fun onClick(v: View?) {
-        if(v?.id == R.id.calculatorFoodBudget){
+        if(v?.id == R.id.calculateButton){
             onCalculateButtonClicked()
         }
     }
@@ -55,7 +55,7 @@ class CalculatorFoodFragment : Fragment(), View.OnClickListener {
     }
 
     private fun onCalculateButtonClicked(){
+        System.out.println("Calculate Clicked!")
         mCallback.onCalculateClicked(foodBudget?.text.toString().toDoubleOrNull()!!)
     }
-
 }

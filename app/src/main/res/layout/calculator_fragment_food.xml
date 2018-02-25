@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/calculator_input_text_size"
             android:inputType="numberDecimal"
-            android:enabled="false"
+            android:enabled="true"
             android:hint="Food budget" />
 
         <Button
@@ -43,11 +43,6 @@
             android:layout_marginTop="20dp"
             android:text="@string/calculator_button_calculate"
             android:layout_gravity="end"
-            android:enabled="false"/>
-
-
+            android:enabled="true"/>
     </LinearLayout>
-
-
-
 </LinearLayout>

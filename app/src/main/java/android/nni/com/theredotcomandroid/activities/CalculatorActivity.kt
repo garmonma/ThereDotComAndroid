@@ -2,16 +2,21 @@ package android.nni.com.theredotcomandroid.activities
 
 import android.nni.com.theredotcomandroid.CalculatorPersistService
 import android.nni.com.theredotcomandroid.R
-import android.nni.com.theredotcomandroid.entities.AdventureBean
-import android.nni.com.theredotcomandroid.entities.LodgingFragmentBean
-import android.nni.com.theredotcomandroid.entities.TravelFragmentBean
+import android.nni.com.theredotcomandroid.ServerCallback
+import android.nni.com.theredotcomandroid.beans.AdventureBean
+import android.nni.com.theredotcomandroid.beans.LodgingFragmentBean
+import android.nni.com.theredotcomandroid.beans.TravelFragmentBean
+import android.nni.com.theredotcomandroid.entities.Adventure
 import android.nni.com.theredotcomandroid.fragments.calculator.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.app_bar_main.*
+import org.json.JSONObject
 
 /**
 * Created by Marcus Garmon on 2/6/2018.
@@ -31,7 +36,7 @@ class CalculatorActivity : AppCompatActivity(),
 
     private var currentFragment : Fragment? = null
 
-    private var hasInternet : Boolean = false
+    private var hasInternet : Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +44,7 @@ class CalculatorActivity : AppCompatActivity(),
         setSupportActionBar(toolbar)
 
         adventure = AdventureBean()
-        calculatorService = CalculatorPersistService()
+        calculatorService = CalculatorPersistService(this)
 
         if (findViewById<FrameLayout>(R.id.calculator_fragment_container) != null) {
 
@@ -139,19 +144,24 @@ class CalculatorActivity : AppCompatActivity(),
 
     override fun onCalculateClicked(foodBudget: Double) {
         val fragment = CalculatorResultsFragment()
+        System.out.println("foodBudget" + foodBudget)
         adventure!!.foodBudget = foodBudget
 
         proceed(fragment, CalculatorStep.STEP_SEVEN_RESULTS_PAGE)
     }
 
     override fun onSaveClicked() {
-        TODO("Show popup to name adventure")
-        TODO("Name Adventure, on enter clicked proceed to planned excursion")
+
 
         if(!hasInternet)
             calculatorService?.writeAdventureToFile(adventure)
-        else
-            calculatorService?.writeAdventureToDatabase(adventure)
+        else {
+            calculatorService?.createAdventure(adventure, object : ServerCallback {
+                override fun onSuccess(result: JSONObject) {
+                    System.out.println("Calculator Activity : " + result.toString())
+                }
+            } )
+        }
 
     }
 

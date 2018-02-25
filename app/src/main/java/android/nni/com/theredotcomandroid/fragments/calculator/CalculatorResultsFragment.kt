@@ -34,7 +34,8 @@ class CalculatorResultsFragment: Fragment(), View.OnClickListener  {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater?.inflate(R.layout.calculator_fragment_result, container, false)
 
-        budgetTotal = savedInstanceState?.getDouble("TotalBudget")!!
+        budgetTotal = arguments.getDouble("TotalBudget")
+     //   budgetTotal = savedInstanceState?.getDouble("TotalBudget")!!
 
         checkFunBudget = v?.findViewById(R.id.checkFunMoney)
         editFunBudget = v?.findViewById(R.id.editFunMoney)
