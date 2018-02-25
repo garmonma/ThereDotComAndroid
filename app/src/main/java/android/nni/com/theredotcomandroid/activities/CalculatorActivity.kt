@@ -1,20 +1,17 @@
 package android.nni.com.theredotcomandroid.activities
 
-import android.nni.com.theredotcomandroid.CalculatorPersistService
+import android.nni.com.theredotcomandroid.services.CalculatorPersistService
 import android.nni.com.theredotcomandroid.R
-import android.nni.com.theredotcomandroid.ServerCallback
+import android.nni.com.theredotcomandroid.services.ServerCallback
 import android.nni.com.theredotcomandroid.beans.AdventureBean
 import android.nni.com.theredotcomandroid.beans.LodgingFragmentBean
 import android.nni.com.theredotcomandroid.beans.TravelFragmentBean
-import android.nni.com.theredotcomandroid.entities.Adventure
 import android.nni.com.theredotcomandroid.fragments.calculator.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.json.JSONObject
 

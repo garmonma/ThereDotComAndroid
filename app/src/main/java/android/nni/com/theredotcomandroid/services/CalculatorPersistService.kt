@@ -1,4 +1,4 @@
-package android.nni.com.theredotcomandroid
+package android.nni.com.theredotcomandroid.services
 
 import android.app.Activity
 import android.nni.com.theredotcomandroid.entities.Adventure

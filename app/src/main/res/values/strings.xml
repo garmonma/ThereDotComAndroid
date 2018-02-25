@@ -27,5 +27,6 @@
     <string name="calculator_button_cost_breakdown">Cost Breakdown</string>
     <string name="calculator_button_save">Save</string>
     <string name="calculator_button_edit">Edit</string>
+    <string name="title_activity_planned_excursion">PlannedExcursion</string>
 
 </resources>
