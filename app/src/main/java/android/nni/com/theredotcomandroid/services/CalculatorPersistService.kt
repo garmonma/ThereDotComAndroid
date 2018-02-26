@@ -3,10 +3,13 @@ package android.nni.com.theredotcomandroid.services
 import android.app.Activity
 import android.nni.com.theredotcomandroid.entities.Adventure
 import android.nni.com.theredotcomandroid.beans.AdventureBean
+import android.nni.com.theredotcomandroid.services.callbacks.JSONArrayServerCallback
+import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
@@ -28,7 +31,7 @@ class CalculatorPersistService(context: Activity)  {
         TODO("Not Implemented")
     }
 
-    fun createAdventure(adventure: AdventureBean?, callback: ServerCallback){
+    fun createAdventure(adventure: AdventureBean?, callback: JSONObjectServerCallback){
         val url = "http://192.168.0.2:8080/api/adventure"
 
         var adv = Adventure()
@@ -46,5 +49,20 @@ class CalculatorPersistService(context: Activity)  {
 
         // Add the request to the RequestQueue.
         queue.add(createProfile)
+    }
+
+    fun getAdventures(accountId: Long?, callback: JSONArrayServerCallback){
+        val url = "http://192.168.0.2:8080/api/adventures?accountId=" + accountId
+
+        // Request a string response from the provided URL.
+        val getAdventures = JsonArrayRequest( url,
+                Response.Listener { response ->
+                    Log.i(TAG, "Response : " + response)
+                    callback.onSuccess(response)
+                },
+                Response.ErrorListener { error -> Log.i(TAG, "Error : " + error) })
+
+        // Add the request to the RequestQueue.
+        queue.add(getAdventures)
     }
 }

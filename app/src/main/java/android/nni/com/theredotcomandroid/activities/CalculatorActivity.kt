@@ -2,7 +2,7 @@ package android.nni.com.theredotcomandroid.activities
 
 import android.nni.com.theredotcomandroid.services.CalculatorPersistService
 import android.nni.com.theredotcomandroid.R
-import android.nni.com.theredotcomandroid.services.ServerCallback
+import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
 import android.nni.com.theredotcomandroid.beans.AdventureBean
 import android.nni.com.theredotcomandroid.beans.LodgingFragmentBean
 import android.nni.com.theredotcomandroid.beans.TravelFragmentBean
@@ -12,7 +12,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.FrameLayout
-import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.activity_calculator.*
 import org.json.JSONObject
 
 /**
@@ -153,7 +153,7 @@ class CalculatorActivity : AppCompatActivity(),
         if(!hasInternet)
             calculatorService?.writeAdventureToFile(adventure)
         else {
-            calculatorService?.createAdventure(adventure, object : ServerCallback {
+            calculatorService?.createAdventure(adventure, object : JSONObjectServerCallback {
                 override fun onSuccess(result: JSONObject) {
                     System.out.println("Calculator Activity : " + result.toString())
                 }
