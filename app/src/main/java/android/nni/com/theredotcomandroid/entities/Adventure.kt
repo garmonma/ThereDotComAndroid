@@ -1,6 +1,7 @@
 package android.nni.com.theredotcomandroid.entities
 
 import android.nni.com.theredotcomandroid.beans.AdventureBean
+import java.sql.Date
 
 
 /**
@@ -14,6 +15,8 @@ class Adventure: GsonEntity() {
     var name: String? = null
 
     var event: Event? = null
+
+    var date: Date? = null
 
     var startAddress: Address? = null
 
@@ -75,4 +78,19 @@ class Adventure: GsonEntity() {
 
         funMoney = adventureBean.funMoney
     }
+
+    fun getTotalCost():Double{
+        var totalBudget = 0.0
+
+        val totalFoodBudget = groupSize * (foodBudget * lodgingNights * 3)
+
+        val totalTransportationBudget = groupSize * (flightCost)
+
+        val totalLodgingBudget = lodgingPerNight * lodgingNights
+
+        totalBudget += totalLodgingBudget + totalFoodBudget + totalTransportationBudget
+
+        return totalBudget
+    }
+
 }

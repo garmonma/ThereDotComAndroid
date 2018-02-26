@@ -7,19 +7,19 @@ import java.sql.Date
  */
 class Event: GsonEntity() {
 
-    private val id: Long? = null
+    var id: Long? = null
 
-    private val name: String? = null
+    var name: String? = null
 
-    private val address: Address? = null
+    var address: Address? = null
 
-    private val startDate: Date? = null
+    var startDate: Date? = null
 
-    private val endDate: Date? = null
+    var endDate: Date? = null
 
-    private val minCost: Double = 0.toDouble()
+    var minCost: Double = 0.toDouble()
 
-    private val maxCost: Double = 0.toDouble()
+    var maxCost: Double = 0.toDouble()
 
-    private val type: String? = null
+    var type: String? = null
 }

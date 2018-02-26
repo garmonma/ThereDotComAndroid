@@ -3,20 +3,15 @@ package android.nni.com.theredotcomandroid.activities
 import android.nni.com.theredotcomandroid.R
 import android.nni.com.theredotcomandroid.entities.Account
 import android.nni.com.theredotcomandroid.entities.Adventure
-import android.nni.com.theredotcomandroid.fragments.calculator.CalculatorStep
-import android.nni.com.theredotcomandroid.fragments.calculator.CalculatorTitleFragment
 import android.nni.com.theredotcomandroid.fragments.pe.PlannedExcursionMainFragment
-import android.nni.com.theredotcomandroid.services.CalculatorPersistService
+import android.nni.com.theredotcomandroid.services.AdventureService
 import android.nni.com.theredotcomandroid.services.callbacks.JSONArrayServerCallback
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.widget.FrameLayout
 import kotlinx.android.synthetic.main.activity_planned_excursion.*
 import org.json.JSONArray
-import org.json.JSONObject
-
 
 
 /**
@@ -24,7 +19,7 @@ import org.json.JSONObject
 */
 class PlannedExcursionActivity : AppCompatActivity() {
 
-    private var calculatorService : CalculatorPersistService? = null
+    private var adventureService : AdventureService? = null
     private var currentFragment : Fragment? = null
 
     private var plannedExcursions : ArrayList<Adventure>? = null
@@ -36,12 +31,12 @@ class PlannedExcursionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_planned_excursion)
         setSupportActionBar(toolbar)
 
-        calculatorService = CalculatorPersistService(this)
+        adventureService = AdventureService(this)
 
         // Account should come from the intent from the calculator activity
         account = Account()
 
-        calculatorService?.getAdventures(account?.id, object : JSONArrayServerCallback{
+        adventureService?.getAdventures(account?.id, object : JSONArrayServerCallback{
             override fun onSuccess(result: JSONArray) {
                 processPlannedExcursions(result)
             }

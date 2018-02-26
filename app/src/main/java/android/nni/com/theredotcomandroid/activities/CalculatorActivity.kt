@@ -1,12 +1,14 @@
 package android.nni.com.theredotcomandroid.activities
 
-import android.nni.com.theredotcomandroid.services.CalculatorPersistService
+import android.accounts.Account
+import android.nni.com.theredotcomandroid.services.AdventureService
 import android.nni.com.theredotcomandroid.R
 import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
 import android.nni.com.theredotcomandroid.beans.AdventureBean
 import android.nni.com.theredotcomandroid.beans.LodgingFragmentBean
 import android.nni.com.theredotcomandroid.beans.TravelFragmentBean
 import android.nni.com.theredotcomandroid.fragments.calculator.*
+import android.nni.com.theredotcomandroid.services.AccountService
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
@@ -29,7 +31,8 @@ class CalculatorActivity : AppCompatActivity(),
 
     private var adventure : AdventureBean? = null
 
-    private var calculatorService : CalculatorPersistService? = null
+    private var adventureService : AdventureService? = null
+    private var accountService: AccountService? = null
 
     private var currentFragment : Fragment? = null
 
@@ -41,7 +44,8 @@ class CalculatorActivity : AppCompatActivity(),
         setSupportActionBar(toolbar)
 
         adventure = AdventureBean()
-        calculatorService = CalculatorPersistService(this)
+        adventureService = AdventureService(this)
+        accountService = AccountService(this)
 
         if (findViewById<FrameLayout>(R.id.calculator_fragment_container) != null) {
 
@@ -151,9 +155,9 @@ class CalculatorActivity : AppCompatActivity(),
 
 
         if(!hasInternet)
-            calculatorService?.writeAdventureToFile(adventure)
+            adventureService?.writeAdventureToFile(adventure)
         else {
-            calculatorService?.createAdventure(adventure, object : JSONObjectServerCallback {
+            adventureService?.createAdventure(adventure, object : JSONObjectServerCallback {
                 override fun onSuccess(result: JSONObject) {
                     System.out.println("Calculator Activity : " + result.toString())
                 }

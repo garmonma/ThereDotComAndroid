@@ -18,7 +18,6 @@ class PlannedExcursionMainFragment : Fragment() {
 
     private var peListView: ListView? = null
 
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater?.inflate(R.layout.pe_fragment_main, container, false)
 
@@ -26,12 +25,9 @@ class PlannedExcursionMainFragment : Fragment() {
         val peList = arguments.getSerializable("plannedExcursions") as ArrayList<Adventure>
 
         var adapter = PlannedExcursionAdapter(this.activity, peList);
-        peListView?.setAdapter(adapter);
+        peListView?.adapter = adapter;
 
         return v
     }
-
-
-
 
 }
