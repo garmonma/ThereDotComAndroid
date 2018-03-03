@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/toolbarMain">
+    <item
+        android:id="@+id/action_excursions"
+        android:title="My Excursions"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_account"
+        android:title="Account"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_Logout"
+        android:title="Logout"
+        app:showAsAction="never" />
+
+    </group>
+
+
+
+    <group android:enabled="true" android:id="@+id/toolbarSub" >
+
+        <item
+            android:id="@+id/action_buddies"
+            android:title="My Buddies"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/action_statistics"
+            android:title="My Statistics"
+            app:showAsAction="never" />
+
+
+
+    </group>
+
 </menu>

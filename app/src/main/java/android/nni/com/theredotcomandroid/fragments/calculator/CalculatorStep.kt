@@ -1,7 +1,5 @@
 package android.nni.com.theredotcomandroid.fragments.calculator
 
-import org.jetbrains.annotations.NotNull
-
 object CalculatorStep {
 
     const val STEP_ONE_OPTION_SELECTION = 1

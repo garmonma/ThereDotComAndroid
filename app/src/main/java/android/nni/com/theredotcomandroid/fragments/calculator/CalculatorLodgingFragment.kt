@@ -2,7 +2,7 @@ package android.nni.com.theredotcomandroid.fragments.calculator
 
 import android.content.Context
 import android.nni.com.theredotcomandroid.R
-import android.nni.com.theredotcomandroid.beans.LodgingFragmentBean
+import android.nni.com.theredotcomandroid.dtos.LodgingFragmentDTO
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -24,14 +24,14 @@ class CalculatorLodgingFragment: Fragment(), View.OnClickListener  {
     private var noButton : Button? = null
     private var nextButton : Button? = null
 
-    private var data : LodgingFragmentBean? = null
+    private var data : LodgingFragmentDTO? = null
 
     private lateinit var mCallback: CalculatorLodgingFragment.OnLodgingNextClicked
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater?.inflate(R.layout.calculator_fragment_lodging, container, false)
 
-        data = LodgingFragmentBean()
+        data = LodgingFragmentDTO()
 
         amountOfNights = v?.findViewById(R.id.lodgingNights)
         costPerNight = v?.findViewById(R.id.lodgingCostPerNight)
@@ -83,7 +83,7 @@ class CalculatorLodgingFragment: Fragment(), View.OnClickListener  {
     }
 
     interface OnLodgingNextClicked {
-        fun onLodgingNextClicked(lodgingData: LodgingFragmentBean)
+        fun onLodgingNextClicked(lodgingData: LodgingFragmentDTO)
     }
 
     private fun onNextButtonClicked() {

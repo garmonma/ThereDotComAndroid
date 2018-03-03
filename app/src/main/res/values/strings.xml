@@ -6,6 +6,7 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- Strings related to New Adventure -->
 
     <string name="calculator_new_adventure">New Adventure</string>
     <string name="calculator_planned_excursion">Planned Excursion</string>
@@ -29,6 +30,23 @@
     <string name="calculator_button_edit">Edit</string>
     <string name="title_activity_planned_excursion">PlannedExcursion</string>
     <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Planned Excursion -->
+    <string name="pe_title">Your Planned Excursions</string>
+    <string name="hotel_accordion">Book A Hotel</string>
+    <string name="flight_accordion">Book A Flight</string>
+    <string name="food_accordion">Find Some Food</string>
+    <string name="taxi_accordion">Commute Options</string>
+    <string name="sights_accordion">Place You Must Go!</string>
+    <string name="todo_status">You\'re All done!</string>
+
+    <!-- Strings related to Account/Registration -->
+    <string name="register_name_hint">Name(Optional)</string>
+    <string name="register_username_hint">Username</string>
+    <string name="register_email_hint">Email</string>
+    <string name="register_password_hint">Password</string>
+    <string name="register_button_signup">Sign Up</string>
+    <string name="register_button_login">Next</string>
 
     <!-- Strings related to Settings -->
 
@@ -101,5 +119,6 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
 
 </resources>

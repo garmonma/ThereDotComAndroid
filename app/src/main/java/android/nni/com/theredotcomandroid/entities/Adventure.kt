@@ -1,6 +1,6 @@
 package android.nni.com.theredotcomandroid.entities
 
-import android.nni.com.theredotcomandroid.beans.AdventureBean
+import android.nni.com.theredotcomandroid.dtos.AdventureDTO
 import java.sql.Date
 
 
@@ -53,30 +53,30 @@ class Adventure: GsonEntity() {
 
     var emergencyBudget: Double = 0.toDouble()
 
-    fun convertAdventureBean(adventureBean: AdventureBean){
-        name = adventureBean.adventureName
+    fun convertAdventureBean(adventureDTO: AdventureDTO){
+        name = adventureDTO.adventureName
 
-        startAddress?.address = adventureBean.address
-        startAddress?.city = adventureBean.city
-        startAddress?.state = adventureBean.state
+        startAddress?.address = adventureDTO.address
+        startAddress?.city = adventureDTO.city
+        startAddress?.state = adventureDTO.state
 
-        groupSize = adventureBean.groupSize
+        groupSize = adventureDTO.groupSize
 
 
-        foodBudget = adventureBean.foodBudget
+        foodBudget = adventureDTO.foodBudget
 
-        flightCost = adventureBean.planeBudget
-        drivingCost = adventureBean.drivingBudget
-        trainCost = adventureBean.trainBudget
-        railBudget = adventureBean.railBudget
-        taxiBudget = adventureBean.taxiBudget
+        flightCost = adventureDTO.planeBudget
+        drivingCost = adventureDTO.drivingBudget
+        trainCost = adventureDTO.trainBudget
+        railBudget = adventureDTO.railBudget
+        taxiBudget = adventureDTO.taxiBudget
 
-        //lodging = adventureBean.
+        //lodging = adventureDTO.
 
-        lodgingPerNight = adventureBean.lodgingCostPerNight
-        lodgingNights = adventureBean.lodgingNumOfNights
+        lodgingPerNight = adventureDTO.lodgingCostPerNight
+        lodgingNights = adventureDTO.lodgingNumOfNights
 
-        funMoney = adventureBean.funMoney
+        funMoney = adventureDTO.funMoney
     }
 
     fun getTotalCost():Double{

@@ -1,9 +1,9 @@
-package android.nni.com.theredotcomandroid.beans
+package android.nni.com.theredotcomandroid.dtos
 
 /**
  * Created by Marcus Garmon on 2/6/2018.
  */
-data class AdventureBean(
+data class AdventureDTO(
         var adventureName: String = "",
         var transportationMethods: List<String> = emptyList(),
         var groupSize: Int = 0,

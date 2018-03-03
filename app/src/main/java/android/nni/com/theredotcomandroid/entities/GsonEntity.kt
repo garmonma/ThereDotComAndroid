@@ -7,7 +7,7 @@ import org.json.JSONObject
 /**
  * Created by Marcus Garmon on 2/24/2018.
  */
-abstract class GsonEntity {
+abstract class GsonEntity: java.io.Serializable {
 
     fun toJSON(): JSONObject? {
         val gson = Gson()

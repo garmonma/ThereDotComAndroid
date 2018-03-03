@@ -1,12 +1,11 @@
 package android.nni.com.theredotcomandroid.activities
 
-import android.accounts.Account
 import android.nni.com.theredotcomandroid.services.AdventureService
 import android.nni.com.theredotcomandroid.R
 import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
-import android.nni.com.theredotcomandroid.beans.AdventureBean
-import android.nni.com.theredotcomandroid.beans.LodgingFragmentBean
-import android.nni.com.theredotcomandroid.beans.TravelFragmentBean
+import android.nni.com.theredotcomandroid.dtos.AdventureDTO
+import android.nni.com.theredotcomandroid.dtos.LodgingFragmentDTO
+import android.nni.com.theredotcomandroid.dtos.TravelFragmentDTO
 import android.nni.com.theredotcomandroid.fragments.calculator.*
 import android.nni.com.theredotcomandroid.services.AccountService
 import android.os.Bundle
@@ -29,7 +28,7 @@ class CalculatorActivity : AppCompatActivity(),
         CalculatorFoodFragment.OnCalculateClicked,
         CalculatorResultsFragment.OnButtonClicked{
 
-    private var adventure : AdventureBean? = null
+    private var adventure : AdventureDTO? = null
 
     private var adventureService : AdventureService? = null
     private var accountService: AccountService? = null
@@ -43,7 +42,7 @@ class CalculatorActivity : AppCompatActivity(),
         setContentView(R.layout.activity_calculator)
         setSupportActionBar(toolbar)
 
-        adventure = AdventureBean()
+        adventure = AdventureDTO()
         adventureService = AdventureService(this)
         accountService = AccountService(this)
 
@@ -123,7 +122,7 @@ class CalculatorActivity : AppCompatActivity(),
         proceed(fragment, CalculatorStep.STEP_THREE_TRANSPORTATION_SELECT)
     }
 
-    override fun onTravelNextClicked(travelData: TravelFragmentBean) {
+    override fun onTravelNextClicked(travelData: TravelFragmentDTO) {
         val fragment = CalculatorLodgingFragment()
         adventure!!.drivingBudget = travelData.drivingBudget
         adventure!!.planeBudget = travelData.planeBudget
@@ -134,7 +133,7 @@ class CalculatorActivity : AppCompatActivity(),
         proceed(fragment, CalculatorStep.STEP_FOUR_LODGING_BUDGET)
     }
 
-    override fun onLodgingNextClicked(lodgingData: LodgingFragmentBean) {
+    override fun onLodgingNextClicked(lodgingData: LodgingFragmentDTO) {
         val fragment = CalculatorFoodFragment()
         adventure!!.lodging = lodgingData.lodging
         adventure!!.lodgingNumOfNights = lodgingData.numberOfNights
