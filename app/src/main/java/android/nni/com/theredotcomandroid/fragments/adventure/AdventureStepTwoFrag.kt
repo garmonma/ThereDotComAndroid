@@ -20,8 +20,8 @@ import java.text.SimpleDateFormat
 
 
 /**
-* Created by Marcus Garmon on 3/11/2018.
-*/
+ * Created by Marcus Garmon on 3/11/2018.
+ */
 class AdventureStepTwoFrag : Fragment(), OnClickListener, DatePickerDialog.OnDateSetListener {
     private val TAG = "StepTwo-Fragment"
     private var calendar = Calendar.getInstance()
@@ -59,7 +59,7 @@ class AdventureStepTwoFrag : Fragment(), OnClickListener, DatePickerDialog.OnDat
 
     override fun onClick(v: View?) {
         if(v?.id == R.id.adventureFromDate || v?.id == R.id.adventureToDate) {
-             DatePickerDialog(this.context, this, calendar
+            DatePickerDialog(this.context, this, calendar
                     .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                     calendar.get(Calendar.DAY_OF_MONTH)).show()
         }

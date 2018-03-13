@@ -37,7 +37,7 @@ class AdventureStepOneFrag : Fragment(), View.OnClickListener{
     private var chosenEvent: Event? = null
     private val gson = Gson()
 
-    private lateinit var mCallback: AdventureStepOneFrag.StepOneListener
+    private lateinit var mCallback: StepOneListener
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var v = inflater?.inflate(R.layout.adventure_fragment_step_one, container, false)

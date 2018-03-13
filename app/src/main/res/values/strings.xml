@@ -14,6 +14,18 @@
     <string name="adventure_return_date">Returning?</string>
     <string name="adventure_date_idk">I Don\'t Know</string>
     <string name="adventure_date_comfort_message">No worries, here are a list of upcoming holidays!</string>
+    <string name="adventure_location">Do you know where the event is located?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="zipcode">Zip Code</string>
+    <string name="adventure_lodging">Where are you staying?</string>
+    <string name="hotel">Hotel</string>
+    <string name="air_bnb">Air BNB</string>
+    <string name="lodging_other">I Have Other Arrangements</string>
+    <string name="optional">Optional</string>
 
     <!-- Strings related to New Adventure -->
 

@@ -1,6 +1,6 @@
 package android.nni.com.theredotcomandroid.entities
 
-import android.nni.com.theredotcomandroid.dtos.RegisterDTO
+import android.nni.com.theredotcomandroid.dtos.RegisterDto
 
 /**
  * Created by Marcus Garmon on 2/24/2018.
@@ -13,8 +13,8 @@ class Account : GsonEntity() {
      var lastName : String = ""
 
 
-     fun setName(registerDTO: RegisterDTO){
-          var names = registerDTO.name.split(" ")
+     fun setName(registerDto: RegisterDto){
+          var names = registerDto.name.split(" ")
           firstName = names[0]
           lastName = names[1]
      }

@@ -3,7 +3,7 @@ package android.nni.com.theredotcomandroid.dtos
 /**
  * Created by Marcus Garmon on 2/13/2018.
  */
-data class TravelFragmentDTO(
+data class TravelFragmentDto(
         var planeBudget: Double = 0.0,
         var drivingBudget: Double = 0.0,
         var trainBudget: Double = 0.0,

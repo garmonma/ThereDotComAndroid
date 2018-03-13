@@ -2,7 +2,7 @@ package android.nni.com.theredotcomandroid.services
 
 import android.app.Activity
 import android.nni.com.theredotcomandroid.dtos.LoginDto
-import android.nni.com.theredotcomandroid.dtos.RegisterDTO
+import android.nni.com.theredotcomandroid.dtos.RegisterDto
 import android.nni.com.theredotcomandroid.entities.Account
 import android.nni.com.theredotcomandroid.entities.User
 import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
@@ -22,16 +22,16 @@ class AccountService(context: Activity) {
     private var queue: RequestQueue = Volley.newRequestQueue(context)
 
 
-    fun registerAccount(registerDTO: RegisterDTO?, callback: JSONObjectServerCallback){
+    fun registerAccount(registerDto: RegisterDto?, callback: JSONObjectServerCallback){
         val url = "http://taccitservice-env-dev.us-east-2.elasticbeanstalk.com/api/register"
 
         var newAccount = Account()
         val user = User()
-        user.convertRegisterDro(registerDTO!!)
+        user.convertRegisterDro(registerDto!!)
 
         newAccount.user = user
-        newAccount.email = registerDTO.email
-        newAccount.setName(registerDTO)
+        newAccount.email = registerDto.email
+        newAccount.setName(registerDto)
 
         Log.i(TAG, newAccount.toString())
 

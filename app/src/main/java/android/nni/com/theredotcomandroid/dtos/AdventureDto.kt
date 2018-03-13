@@ -6,7 +6,7 @@ import android.nni.com.theredotcomandroid.entities.Account
 /**
  * Created by Marcus Garmon on 2/6/2018.
  */
-data class AdventureDTO(
+data class AdventureDto(
         var account: Account = Account(),
         var adventureName: String = "",
         var transportationMethods: List<String> = emptyList(),

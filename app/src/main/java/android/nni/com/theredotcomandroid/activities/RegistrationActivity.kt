@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.nni.com.theredotcomandroid.R
 import android.nni.com.theredotcomandroid.dtos.LoginDto
-import android.nni.com.theredotcomandroid.dtos.RegisterDTO
+import android.nni.com.theredotcomandroid.dtos.RegisterDto
 import android.nni.com.theredotcomandroid.entities.Account
 import android.nni.com.theredotcomandroid.services.AccountService
 import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
@@ -31,7 +31,7 @@ class RegistrationActivity : AppCompatActivity(), OnClickListener {
     private var loginButton: Button? = null
 
     private var accountService : AccountService? = null
-    private var registerDto : RegisterDTO? = null
+    private var registerDto : RegisterDto? = null
     private var loginDto: LoginDto? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +66,7 @@ class RegistrationActivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun registerNewUser(){
-        registerDto = RegisterDTO()
+        registerDto = RegisterDto()
         registerDto?.name = nameText?.text.toString()
         registerDto?.username = usernameText?.text.toString()
         registerDto?.email = emailText?.text.toString()

@@ -2,7 +2,7 @@ package android.nni.com.theredotcomandroid.services
 
 import android.app.Activity
 import android.nni.com.theredotcomandroid.entities.Adventure
-import android.nni.com.theredotcomandroid.dtos.AdventureDTO
+import android.nni.com.theredotcomandroid.dtos.AdventureDto
 import android.nni.com.theredotcomandroid.services.callbacks.JSONArrayServerCallback
 import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
 import android.util.Log
@@ -18,11 +18,11 @@ class AdventureService(context: Activity)  {
 
     private var queue: RequestQueue = Volley.newRequestQueue(context)
 
-    fun writeAdventureToFile(adventure: AdventureDTO?){
+    fun writeAdventureToFile(adventure: AdventureDto?){
         TODO("Not Implemented")
     }
 
-    fun createAdventure(adventure: AdventureDTO?, callback: JSONObjectServerCallback){
+    fun createAdventure(adventure: AdventureDto?, callback: JSONObjectServerCallback){
         val url = "http://taccitservice-env-dev.us-east-2.elasticbeanstalk.com/api/adventure"
 
         val adv = Adventure()

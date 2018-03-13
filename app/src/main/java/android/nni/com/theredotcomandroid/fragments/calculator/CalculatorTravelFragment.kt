@@ -2,7 +2,7 @@ package android.nni.com.theredotcomandroid.fragments.calculator
 
 import android.content.Context
 import android.nni.com.theredotcomandroid.R
-import android.nni.com.theredotcomandroid.dtos.TravelFragmentDTO
+import android.nni.com.theredotcomandroid.dtos.TravelFragmentDto
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -33,12 +33,12 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
 
     private lateinit var mCallback: CalculatorTravelFragment.OnTravelNextClicked
 
-    private var travelData: TravelFragmentDTO? = null
+    private var travelData: TravelFragmentDto? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater?.inflate(R.layout.calculator_fragment_travel, container, false)
 
-        travelData = TravelFragmentDTO()
+        travelData = TravelFragmentDto()
 
         checkboxPlane = v?.findViewById(R.id.travelCheckboxPlane)
         checkboxDriving = v?.findViewById(R.id.travelCheckboxDriving)
@@ -92,7 +92,7 @@ class CalculatorTravelFragment : Fragment(), View.OnClickListener {
     }
 
     interface OnTravelNextClicked {
-        fun onTravelNextClicked(travelData: TravelFragmentDTO)
+        fun onTravelNextClicked(travelData: TravelFragmentDto)
     }
 
     private fun onNextButtonClicked(){

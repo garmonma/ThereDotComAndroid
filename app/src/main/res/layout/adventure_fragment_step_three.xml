@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_location"
+        android:textSize="@dimen/calculator_text_size"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+        <Button
+            android:id="@+id/adventureLocationYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yes"
+            android:textSize="@dimen/calculator_input_text_size"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            style="?android:attr/borderlessButtonStyle"/>
+
+        <Button
+            android:id="@+id/adventureLocationNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no"
+            android:textSize="@dimen/calculator_input_text_size"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            style="?android:attr/borderlessButtonStyle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/adventureCountry"
+            android:inputType="textAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/country"
+            android:textSize="@dimen/calculator_input_text_size"/>
+
+        <EditText
+            android:id="@+id/adventureCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/city"
+            android:textSize="@dimen/calculator_input_text_size"/>
+
+        <EditText
+            android:id="@+id/adventureState"
+            android:inputType="textAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/state"
+            android:textSize="@dimen/calculator_input_text_size"/>
+
+        <EditText
+            android:id="@+id/adventureZipCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/zipcode"
+            android:textSize="@dimen/calculator_input_text_size"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/stepThreeNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_next"
+        android:textSize="@dimen/calculator_input_text_size"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_gravity="end"
+        android:enabled="true"
+        style="?android:attr/borderlessButtonStyle"/>
+
+
+
+</LinearLayout>
