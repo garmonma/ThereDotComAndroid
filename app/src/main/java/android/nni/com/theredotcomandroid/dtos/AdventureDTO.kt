@@ -1,9 +1,13 @@
 package android.nni.com.theredotcomandroid.dtos
 
+import android.nni.com.theredotcomandroid.entities.Account
+
+
 /**
  * Created by Marcus Garmon on 2/6/2018.
  */
 data class AdventureDTO(
+        var account: Account = Account(),
         var adventureName: String = "",
         var transportationMethods: List<String> = emptyList(),
         var groupSize: Int = 0,

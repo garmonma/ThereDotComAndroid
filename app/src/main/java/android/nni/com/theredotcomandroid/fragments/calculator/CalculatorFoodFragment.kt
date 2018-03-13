@@ -55,7 +55,6 @@ class CalculatorFoodFragment : Fragment(), View.OnClickListener {
     }
 
     private fun onCalculateButtonClicked(){
-        System.out.println("Calculate Clicked!")
         mCallback.onCalculateClicked(foodBudget?.text.toString().toDoubleOrNull()!!)
     }
 }

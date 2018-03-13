@@ -20,7 +20,7 @@ import android.widget.Toast
 */
 class PlannedExcursionMainFragment : Fragment(), OnItemClickListener {
 
-    private var peList: ArrayList<Adventure> = emptyList<Adventure>() as ArrayList<Adventure>
+    private var peList: ArrayList<Adventure>? = null
     private var peListView: ListView? = null
 
     private lateinit var mCallback: PlannedExcursionMainFragment.onListItemClicked
@@ -29,9 +29,10 @@ class PlannedExcursionMainFragment : Fragment(), OnItemClickListener {
         val v = inflater?.inflate(R.layout.pe_fragment_main, container, false)
 
         peListView = v?.findViewById(R.id.peListView)
+        peList = ArrayList()
         peList = arguments.getSerializable("plannedExcursions") as ArrayList<Adventure>
 
-        var adapter = PlannedExcursionAdapter(this.activity, peList);
+        var adapter = PlannedExcursionAdapter(this.activity, peList!!);
         peListView?.adapter = adapter;
 
         return v
@@ -48,7 +49,7 @@ class PlannedExcursionMainFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Toast.makeText(this.activity, "Click on " + peList[position].name, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this.activity, "Clicked on " + peList!![position].name, Toast.LENGTH_SHORT).show()
         onPlannedExcursionClicked(id)
     }
 

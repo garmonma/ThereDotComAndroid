@@ -20,23 +20,27 @@ class CalculatorTitleFragment : Fragment(), OnClickListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var v = inflater?.inflate(R.layout.calculator_fragment_title, container, false);
 
-        var buttonNewAdventure = v?.findViewById<Button>(R.id.buttonNewAdventure);
-        var buttonPlannedExcursion = v?.findViewById<Button>(R.id.buttonPlannedExcursion);
+        var buttonNewAdventure = v?.findViewById<Button>(R.id.buttonNewAdventure)
+        buttonNewAdventure?.setOnClickListener(this)
+        var buttonPlannedExcursion = v?.findViewById<Button>(R.id.buttonPlannedExcursion)
+        buttonPlannedExcursion?.setOnClickListener(this)
+        var buttonSignIn = v?.findViewById<Button>(R.id.buttonSignIn)
+        buttonSignIn?.setOnClickListener(this)
 
-        buttonNewAdventure?.setOnClickListener(this);
-
-        //TODO buttonPlannedExcursion goes to <Design Planned Exursion Flow> flow
-        buttonPlannedExcursion?.setOnClickListener(this);
         return v;
     }
 
     override fun onClick(v: View?) {
         if (v?.id == R.id.buttonNewAdventure) {
-            onNewAdventureClicked();
+            onNewAdventureClicked()
         }
 
         if(v?.id == R.id.buttonPlannedExcursion){
             onPlannedExcursionClicked()
+        }
+
+        if(v?.id == R.id.buttonSignIn){
+            onSignInClicked()
         }
     }
 
@@ -46,20 +50,24 @@ class CalculatorTitleFragment : Fragment(), OnClickListener {
         try {
             mCallback = context as OnOptionClicked;
         } catch (e: ClassCastException) {
-            throw ClassCastException(context.toString() + " must implement OnContinueButtonClicked");
+            throw ClassCastException(context.toString() + " must implement OnContinueButtonClicked")
         }
     }
 
     interface OnOptionClicked {
-        fun onOptionClicked(option: String);
+        fun onOptionClicked(option: String)
     }
 
 
     private fun onPlannedExcursionClicked() {
-        mCallback.onOptionClicked("PlannedExcursion");
+        mCallback.onOptionClicked("PlannedExcursion")
     }
 
     private fun onNewAdventureClicked() {
-        mCallback.onOptionClicked("NewAdventure");
+        mCallback.onOptionClicked("NewAdventure")
+    }
+
+    private fun onSignInClicked(){
+        mCallback.onOptionClicked("SignIn")
     }
 }

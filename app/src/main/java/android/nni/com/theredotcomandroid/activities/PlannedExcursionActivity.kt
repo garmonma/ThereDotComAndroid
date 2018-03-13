@@ -11,6 +11,7 @@ import android.nni.com.theredotcomandroid.services.callbacks.JSONArrayServerCall
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.FrameLayout
 import kotlinx.android.synthetic.main.activity_planned_excursion.*
 import org.json.JSONArray
@@ -20,6 +21,7 @@ import org.json.JSONArray
 */
 class PlannedExcursionActivity : AppCompatActivity(),
         PlannedExcursionMainFragment.onListItemClicked {
+    private val TAG = "PE Activity"
 
     private var adventureService : AdventureService? = null
     private var currentFragment : Fragment? = null
@@ -35,9 +37,15 @@ class PlannedExcursionActivity : AppCompatActivity(),
         setSupportActionBar(toolbar)
 
         adventureService = AdventureService(this)
+        plannedExcursions = ArrayList()
 
         // Account should come from the intent from the calculator activity
-        account = Account()
+        if(intent.hasExtra("account")) {
+            account = intent.getSerializableExtra("account") as Account
+        }else {
+            // Generate temporary account for offline users
+            generateTempAccount()
+        }
 
         adventureService?.getAdventures(account?.id, object : JSONArrayServerCallback{
             override fun onSuccess(result: JSONArray) {
@@ -75,7 +83,7 @@ class PlannedExcursionActivity : AppCompatActivity(),
 
         when (step) {
             PlannedExcursionStep.STEP_TWO_TODO_CHECKLIST -> {
-                System.out.println("Step Two ")
+                Log.i(TAG,"Step Two ")
                 args.putSerializable ("adventure", nextAdventure)
             }
         }
@@ -92,7 +100,7 @@ class PlannedExcursionActivity : AppCompatActivity(),
 
     override fun onListItemClicked(id: Long) {
         val fragment = PlannedExcursionChecklistFragment()
-        nextAdventure = this!!.plannedExcursions!!.lastOrNull { it.id === id }
+        nextAdventure = this.plannedExcursions!!.lastOrNull { it.id === id }
         proceed(fragment, PlannedExcursionStep.STEP_TWO_TODO_CHECKLIST)
     }
 
@@ -101,5 +109,9 @@ class PlannedExcursionActivity : AppCompatActivity(),
         (0 until data.length())
                 .map { data.getJSONObject(it) }
                 .forEach { plannedExcursions!!.add(it as Adventure) }
+    }
+
+    private fun generateTempAccount(){
+
     }
 }

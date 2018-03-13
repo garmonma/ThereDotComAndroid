@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_event"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/calculator_text_size"/>
+
+    <Spinner
+        android:id="@+id/eventTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+    <ListView
+        android:id="@+id/eventSuggestionList"
+        android:layout_width="match_parent"
+        android:layout_height="324dp"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
+    
+    <EditText
+        android:id="@+id/eventOtherSubmission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/adventure_event_other_placeholder"
+        android:visibility="gone"
+        style="?android:dropDownHintAppearance"/>
+
+    <Button
+        android:id="@+id/stepOneNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_next"
+        android:textSize="@dimen/calculator_input_text_size"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_gravity="end"
+        android:enabled="true"
+        style="?android:attr/borderlessButtonStyle"/>
+
+
+</LinearLayout>

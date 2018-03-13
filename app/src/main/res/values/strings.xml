@@ -6,8 +6,18 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- Strings for updated adventure calculator -->
+    <string name="adventure_event">What type of event are you planning?</string>
+    <string name="adventure_next">Next</string>
+    <string name="adventure_event_other_placeholder">Other - type</string>
+    <string name="adventure_date">What day?</string>
+    <string name="adventure_return_date">Returning?</string>
+    <string name="adventure_date_idk">I Don\'t Know</string>
+    <string name="adventure_date_comfort_message">No worries, here are a list of upcoming holidays!</string>
+
     <!-- Strings related to New Adventure -->
 
+    <string name="titleSignIn">Sign In</string>
     <string name="calculator_new_adventure">New Adventure</string>
     <string name="calculator_planned_excursion">Planned Excursion</string>
     <string name="calculator_travel_one">How will you get there?</string>
@@ -120,5 +130,6 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_adventure">AdventureActivity</string>
 
 </resources>

@@ -6,6 +6,5 @@ import org.json.JSONArray
  * Created by Marcus Garmon on 2/25/2018.
  */
 interface JSONArrayServerCallback {
-
-    fun onSuccess(result: JSONArray);
+    fun onSuccess(results: JSONArray);
 }

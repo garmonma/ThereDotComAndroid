@@ -1,18 +1,22 @@
 package android.nni.com.theredotcomandroid.activities
 
+import android.content.Intent
 import android.nni.com.theredotcomandroid.services.AdventureService
 import android.nni.com.theredotcomandroid.R
 import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
 import android.nni.com.theredotcomandroid.dtos.AdventureDTO
 import android.nni.com.theredotcomandroid.dtos.LodgingFragmentDTO
 import android.nni.com.theredotcomandroid.dtos.TravelFragmentDTO
+import android.nni.com.theredotcomandroid.entities.Account
 import android.nni.com.theredotcomandroid.fragments.calculator.*
 import android.nni.com.theredotcomandroid.services.AccountService
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.json.JSONObject
 
@@ -27,6 +31,7 @@ class CalculatorActivity : AppCompatActivity(),
         CalculatorLodgingFragment.OnLodgingNextClicked,
         CalculatorFoodFragment.OnCalculateClicked,
         CalculatorResultsFragment.OnButtonClicked{
+    private val TAG = "Calculator Activity"
 
     private var adventure : AdventureDTO? = null
 
@@ -37,6 +42,8 @@ class CalculatorActivity : AppCompatActivity(),
 
     private var hasInternet : Boolean = true
 
+    private var account : Account? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
@@ -45,6 +52,17 @@ class CalculatorActivity : AppCompatActivity(),
         adventure = AdventureDTO()
         adventureService = AdventureService(this)
         accountService = AccountService(this)
+        account = Account()
+
+        if(intent.hasExtra("account")){
+            Log.i(TAG, "Has Account Extra!")
+            getAccount(true)
+        }
+        else {
+            Log.i(TAG, "Does Not Have Account Extra!")
+            getAccount(false)
+        }
+
 
         if (findViewById<FrameLayout>(R.id.calculator_fragment_container) != null) {
 
@@ -73,18 +91,18 @@ class CalculatorActivity : AppCompatActivity(),
 
         when (step) {
             CalculatorStep.STEP_TWO_GET_STARTED ->
-                System.out.println("Step Two " + adventure)
+                Log.i(TAG, "Step Two : " + adventure)
             CalculatorStep.STEP_THREE_TRANSPORTATION_SELECT ->
-                System.out.println("Step Three " + adventure)
+                Log.i(TAG,"Step Three : " + adventure)
             CalculatorStep.STEP_FOUR_LODGING_BUDGET ->
-                System.out.println("Step Four " + adventure)
+                Log.i(TAG,"Step Four : " + adventure)
             CalculatorStep.STEP_FIVE_RENTAL_CAR_BUDGET ->
-                System.out.println("Step Five " + adventure)
+                Log.i(TAG,"Step Five : " + adventure)
             CalculatorStep.STEP_SIX_FOOD_BUDGET ->
-                System.out.println("Step Six " + adventure)
+                Log.i(TAG,"Step Six : " + adventure)
             CalculatorStep.STEP_SEVEN_RESULTS_PAGE -> {
                 args.putDouble("TotalBudget", calculateTotalBudget())
-                System.out.println("Step Seven " + adventure)
+                Log.i(TAG,"Step Seven : " + adventure)
             }
         }
 
@@ -104,12 +122,24 @@ class CalculatorActivity : AppCompatActivity(),
         if(option.equals("newadventure", true)){
             fragment = CalculatorInitFragment()
             adventure!!.adventureName = "New Adventure"
-        } else {
-            TODO("Create flow for planned excursion")
-            //fragment =
-        }
 
-        proceed(fragment, CalculatorStep.STEP_TWO_GET_STARTED)
+            if(account != null){
+                adventure!!.account = account!!
+            }
+
+            proceed(fragment, CalculatorStep.STEP_TWO_GET_STARTED)
+        } else if(option.equals("signin", true)) {
+            val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
+        } else if(option.equals("plannedexcursion", true)){
+            if(account?.id == null){
+                Toast.makeText(this, "Please Sign In or create an account!", Toast.LENGTH_SHORT).show()
+                return
+            }
+            val intent = Intent(this, PlannedExcursionActivity::class.java)
+            intent.putExtra("account", account)
+            startActivity(intent)
+        }
     }
 
     override fun onInitNextClicked(groupSize: Int, address: String, state: String, city: String ) {
@@ -144,36 +174,38 @@ class CalculatorActivity : AppCompatActivity(),
 
     override fun onCalculateClicked(foodBudget: Double) {
         val fragment = CalculatorResultsFragment()
-        System.out.println("foodBudget" + foodBudget)
+        Log.i(TAG,"foodBudget" + foodBudget)
         adventure!!.foodBudget = foodBudget
 
         proceed(fragment, CalculatorStep.STEP_SEVEN_RESULTS_PAGE)
     }
 
     override fun onSaveClicked() {
-
-
         if(!hasInternet)
             adventureService?.writeAdventureToFile(adventure)
         else {
             adventureService?.createAdventure(adventure, object : JSONObjectServerCallback {
                 override fun onSuccess(result: JSONObject) {
-                    System.out.println("Calculator Activity : " + result.toString())
+                    Log.i(TAG,"Calculator Activity : " + result.toString())
                 }
             } )
-        }
 
+            Toast.makeText(this, "A new adventure as been made!", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, PlannedExcursionActivity::class.java)
+            intent.putExtra("account", account)
+            startActivity(intent)
+        }
     }
 
     override fun onEditClicked() {
-        val fragment = CalculatorTitleFragment()
-
-        TODO("Grab the fun money and save it to the adventure")
-        proceed(fragment, CalculatorStep.STEP_TWO_GET_STARTED)
+        Toast.makeText(this, "Not implemented yet!", Toast.LENGTH_SHORT).show()
+        return
     }
 
     override fun onBreakdownClicked() {
-        TODO("Show popup for breakdown results")
+        Toast.makeText(this, "Not implemented yet!", Toast.LENGTH_SHORT).show()
+        return
     }
 
     fun onCheckboxClicked(view: View){
@@ -190,19 +222,34 @@ class CalculatorActivity : AppCompatActivity(),
         val totalFoodBudget =
                 adventure!!.groupSize * (adventure!!.foodBudget * adventure!!.lodgingNumOfNights * 3)
 
-        System.out.println("Total Food Budget = " + totalFoodBudget)
+        Log.i(TAG,"Total Food Budget = " + totalFoodBudget)
 
         val totalTransportationBudget =
                 adventure!!.groupSize * (adventure!!.planeBudget)
 
-        System.out.println("Total Transportation Budget = " + totalTransportationBudget)
+        Log.i(TAG,"Total Transportation Budget = " + totalTransportationBudget)
 
         val totalLodgingBudget = adventure!!.lodgingCostPerNight * adventure!!.lodgingNumOfNights
 
-        System.out.println("Total Lodging Budget = " + totalLodgingBudget)
+        Log.i(TAG,"Total Lodging Budget = " + totalLodgingBudget)
 
         totalBudget += totalLodgingBudget + totalFoodBudget + totalTransportationBudget
 
         return totalBudget
     }
+
+    private fun autoLogAccount(firstTimeIn: Boolean){
+
+    }
+
+    private fun getAccount(hasAccountExtra: Boolean){
+        if(!hasAccountExtra) {
+            Log.i(TAG, "In Get Account, Does not have account extra!")
+            autoLogAccount(false)
+            return
+        }
+
+        account = intent.getSerializableExtra("account") as Account
+    }
+
 }

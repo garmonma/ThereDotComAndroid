@@ -1,27 +1,26 @@
 package android.nni.com.theredotcomandroid.activities
 
-import android.accounts.Account
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
+
 import android.support.v7.app.AppCompatActivity
 import android.nni.com.theredotcomandroid.R
 import android.nni.com.theredotcomandroid.dtos.LoginDto
 import android.nni.com.theredotcomandroid.dtos.RegisterDTO
+import android.nni.com.theredotcomandroid.entities.Account
 import android.nni.com.theredotcomandroid.services.AccountService
-import android.nni.com.theredotcomandroid.services.callbacks.JSONArrayServerCallback
 import android.nni.com.theredotcomandroid.services.callbacks.JSONObjectServerCallback
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.EditText
+import com.google.gson.Gson
 
 import kotlinx.android.synthetic.main.activity_registration.*
-import kotlinx.android.synthetic.main.content_registration.*
-import org.json.JSONArray
 import org.json.JSONObject
 
 class RegistrationActivity : AppCompatActivity(), OnClickListener {
-
+    private val TAG = "Registration Activity"
 
     private var nameText: EditText? = null
     private var usernameText: EditText? = null
@@ -86,11 +85,14 @@ class RegistrationActivity : AppCompatActivity(), OnClickListener {
         loginDto?.username = usernameText?.text.toString()
         loginDto?.password = passwordText?.text.toString()
 
+        val intent = Intent(this, CalculatorActivity::class.java)
         accountService?.login(loginDto, object : JSONObjectServerCallback {
             override fun onSuccess(result: JSONObject) {
-                // Grab account id and change intent to Calculator Activity
+                val gson = Gson()
+                val account = gson.fromJson<Account>(result.toString(), Account::class.java)
+                intent.putExtra("account", account)
+                startActivity(intent)
             }
         })
     }
-
 }

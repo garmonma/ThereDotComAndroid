@@ -35,7 +35,6 @@ class CalculatorResultsFragment: Fragment(), View.OnClickListener  {
         val v = inflater?.inflate(R.layout.calculator_fragment_result, container, false)
 
         budgetTotal = arguments.getDouble("TotalBudget")
-     //   budgetTotal = savedInstanceState?.getDouble("TotalBudget")!!
 
         checkFunBudget = v?.findViewById(R.id.checkFunMoney)
         editFunBudget = v?.findViewById(R.id.editFunMoney)
@@ -100,7 +99,7 @@ class CalculatorResultsFragment: Fragment(), View.OnClickListener  {
     private fun setupViewListeners() {
         saveButton?.setOnClickListener(this)
         editButton?.setOnClickListener(this)
-        costBreakdownButton?.setOnClickListener(this)
+        breakdownButton?.setOnClickListener(this)
 
         editFunBudget?.setOnFocusChangeListener { v, hasFocus ->
             if(!hasFocus)

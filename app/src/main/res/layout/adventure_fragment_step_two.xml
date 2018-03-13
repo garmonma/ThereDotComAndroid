@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_date"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/calculator_text_size"/>
+
+    <EditText
+        android:id="@+id/adventureFromDate"
+        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="false"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_return_date"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/calculator_text_size"/>
+
+    <EditText
+        android:id="@+id/adventureToDate"
+        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="false"/>
+
+    <Button
+        android:id="@+id/adventureDateIdk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_date_idk"
+        android:textSize="@dimen/calculator_input_text_size"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center_horizontal"
+        android:enabled="false"
+        style="?android:attr/borderlessButtonStyle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_date_comfort_message"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:textSize="@dimen/calculator_text_size"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="216dp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/stepTwoNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/adventure_next"
+        android:textSize="@dimen/calculator_input_text_size"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_gravity="end"
+        android:enabled="true"
+        style="?android:attr/borderlessButtonStyle"/>
+
+
+</LinearLayout>

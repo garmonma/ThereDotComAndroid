@@ -23,7 +23,7 @@ class AccountService(context: Activity) {
 
 
     fun registerAccount(registerDTO: RegisterDTO?, callback: JSONObjectServerCallback){
-        val url = "http://192.168.0.2:8080/api/register"
+        val url = "http://taccitservice-env-dev.us-east-2.elasticbeanstalk.com/api/register"
 
         var newAccount = Account()
         val user = User()
@@ -34,7 +34,6 @@ class AccountService(context: Activity) {
         newAccount.setName(registerDTO)
 
         Log.i(TAG, newAccount.toString())
-        System.out.println(TAG + newAccount)
 
         val register = JsonObjectRequest(Request.Method.POST, url, newAccount.toJSON(),
                 Response.Listener { response ->
@@ -47,12 +46,12 @@ class AccountService(context: Activity) {
     }
 
     fun login(loginDto: LoginDto?, callback: JSONObjectServerCallback){
-        val url = "http://192.168.0.2:8080/api/login"
+        val url = "http://taccitservice-env-dev.us-east-2.elasticbeanstalk.com/api/login"
 
         val user = User()
         user.convertLoginDto(loginDto!!)
 
-        System.out.println(user)
+        Log.i(TAG, user.toString())
 
         val register = JsonObjectRequest(Request.Method.POST, url, user.toJSON(),
                 Response.Listener { response ->

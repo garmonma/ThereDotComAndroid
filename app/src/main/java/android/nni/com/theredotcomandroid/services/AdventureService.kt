@@ -14,7 +14,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 
 class AdventureService(context: Activity)  {
-    private val TAG = "Profile Service"
+    private val TAG = "Adventure Service"
 
     private var queue: RequestQueue = Volley.newRequestQueue(context)
 
@@ -23,12 +23,12 @@ class AdventureService(context: Activity)  {
     }
 
     fun createAdventure(adventure: AdventureDTO?, callback: JSONObjectServerCallback){
-        val url = "http://192.168.0.2:8080/api/adventure"
+        val url = "http://taccitservice-env-dev.us-east-2.elasticbeanstalk.com/api/adventure"
 
         val adv = Adventure()
         adv.convertAdventureBean(adventure!!)
 
-        System.out.println(adv)
+        Log.i(TAG, adv.toString())
 
         // Request a string response from the provided URL.
         val createAdventure = JsonObjectRequest(Request.Method.POST, url, adv.toJSON(),
@@ -43,7 +43,7 @@ class AdventureService(context: Activity)  {
     }
 
     fun getAdventures(accountId: Long?, callback: JSONArrayServerCallback){
-        val url = "http://192.168.0.2:8080/api/adventures?accountId=" + accountId
+        val url = "http://taccitservice-env-dev.us-east-2.elasticbeanstalk.com/api/adventures/" + accountId
 
         // Request a string response from the provided URL.
         val getAdventures = JsonArrayRequest( url,
